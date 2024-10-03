@@ -30,6 +30,12 @@ public class LectureService implements LecturePortIn {
         // 엔티티 -> 도메인 객체로 변환
         return lecturePortOut.findById(id);
     }
+
+    @Override
+    public Optional<Lecture> findByIdLock(long id) {
+        return lecturePortOut.findByIdLock(id);
+    }
+
     @Override
     public Lecture save(Lecture lecture) {
         return lecturePortOut.save(lecture);
@@ -41,9 +47,10 @@ public class LectureService implements LecturePortIn {
         return getList;
     }
 
+    @Transactional
     @Override
     public LectureApplyResponse apply(LectureApplyRequest request) {
-        Optional<Lecture> optionalLecture = findById(request.lectureId());
+        Optional<Lecture> optionalLecture = findByIdLock(request.lectureId());
         if (optionalLecture.isPresent()) {
             Lecture lecture = optionalLecture.get();
             int count = lecture.getTotalAppliedUser();
@@ -53,10 +60,10 @@ public class LectureService implements LecturePortIn {
                 save(lecture);
                 LectureAppliedUser lectureAppliedUser = new LectureAppliedUser(request.lectureId(), request.userId());
                 lectureAppliedUserPortOut.save(lectureAppliedUser);
-                return new LectureApplyResponse(lecture.getName(), lecture.getDate());
+                return new LectureApplyResponse(lecture.getName(), lecture.getDate(), "Y");
             }
         }
-        return null;
+        return new LectureApplyResponse("", null, "N");
     }
 
     @Override

@@ -38,8 +38,8 @@ public class LectureAppliedUserJpaImple implements LectureAppliedUserPortOut {
     }
 
     @Override
-    public void deleteById(long id) {
-        lectureAppliedUserJpaRepository.deleteById(id);
+    public long countByLecturId(long lectureId) {
+        return lectureAppliedUserJpaRepository.countAllByLectureId(lectureId);
     }
 }
 

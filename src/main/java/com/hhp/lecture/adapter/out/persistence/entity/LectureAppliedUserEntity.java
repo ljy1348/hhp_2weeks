@@ -13,7 +13,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class LectureAppliedUserEntity {
+public class LectureAppliedUserEntity extends BaseTimeEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
@@ -22,15 +22,21 @@ public class LectureAppliedUserEntity {
 
     // LectureAppliedUserEntity -> LectureAppliedUser 도메인 객체로 변환
     public LectureAppliedUser toDomain() {
-        return new LectureAppliedUser(this.id, this.lectureId, this.userId);
+        return new LectureAppliedUser(this.id, this.lectureId, this.userId, this.getCreatedDate(), this.getModifiedDate());
     }
 
     // LectureAppliedUser 도메인 객체 -> LectureAppliedUserEntity로 변환
     public static LectureAppliedUserEntity fromDomain(LectureAppliedUser lectureAppliedUser) {
-        return new LectureAppliedUserEntity(
+        LectureAppliedUserEntity entity = new LectureAppliedUserEntity(
                 lectureAppliedUser.getId(),
-                lectureAppliedUser.getInstructorId(),
+                lectureAppliedUser.getLectureId(),  // 잘못된 필드명 수정: getInstructorId() -> getLectureId()
                 lectureAppliedUser.getUserId()
         );
+
+        // BaseTimeEntity에서 제공하는 필드도 설정
+        entity.setCreatedDate(lectureAppliedUser.getCreateDate());
+        entity.setModifiedDate(lectureAppliedUser.getUpdateDate());
+
+        return entity;
     }
 }

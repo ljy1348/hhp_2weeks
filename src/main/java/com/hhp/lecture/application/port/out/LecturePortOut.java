@@ -10,6 +10,7 @@ import java.util.Optional;
 
 public interface LecturePortOut {
     Optional<Lecture> findById(long id);
+    Optional<Lecture> findByIdLock(long id);
     Lecture save(Lecture lecture);
     List<LectureResponse> findAll();
     List<LectureResponse> findByDate(LocalDateTime startDate, LocalDateTime endDate);

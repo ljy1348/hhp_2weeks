@@ -14,6 +14,8 @@ create table lecture_applied_user (
     id bigint primary key auto_increment,
     lecture_id bigint,
     user_id bigint
+    , create_date timestamp(6)
+    , update_date timestamp(6)
 );
 
 create table instructor (

@@ -10,4 +10,5 @@ public interface LectureAppliedUserPortIn {
     Optional<LectureAppliedUser> findById(long id);
     LectureAppliedUser save(LectureAppliedUser lectureAppliedUser);
     List<LectureAppliedUser> findAll();
+    long countByLecturId(long lectureId);
 }

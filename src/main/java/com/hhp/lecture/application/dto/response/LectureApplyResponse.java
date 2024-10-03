@@ -10,5 +10,6 @@ import java.time.LocalDateTime;
 
 public record LectureApplyResponse (
     String lectureName,
-    LocalDateTime lectureDate
+    LocalDateTime lectureDate,
+    String resultYn
 ) {}

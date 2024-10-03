@@ -2,7 +2,9 @@ package com.hhp.lecture.adapter.out.persistence.jpa;
 
 import com.hhp.lecture.adapter.out.persistence.entity.LectureEntity;
 import com.hhp.lecture.application.dto.response.LectureResponse;
+import jakarta.persistence.LockModeType;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Lock;
 import org.springframework.data.jpa.repository.Query;
 
 import java.time.LocalDateTime;
@@ -10,6 +12,13 @@ import java.util.List;
 import java.util.Optional;
 
 public interface LectureJpaRepository extends JpaRepository<LectureEntity, Long> {
+
+    @Lock(LockModeType.PESSIMISTIC_WRITE)
+    @Query("""
+    select l from LectureEntity l where l.id = :id
+    """)
+    Optional<LectureEntity> getByIdLock(long id);
+    
     Optional<LectureEntity> findById(long id);
 
     LectureEntity save(LectureEntity lecture);
