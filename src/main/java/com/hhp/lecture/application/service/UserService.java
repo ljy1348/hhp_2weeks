@@ -12,10 +12,10 @@ import java.util.Optional;
 @Service
 public class UserService implements UserUsecase {
 
-    private final UserPort userAppRepository;
+    private final UserPort userPort;
 
     @Override
     public Optional<User> findByUser(long id) {
-        return userAppRepository.findById(id);
+        return userPort.findById(id);
     }
 }
