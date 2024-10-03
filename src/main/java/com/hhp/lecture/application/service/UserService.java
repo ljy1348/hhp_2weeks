@@ -1,7 +1,7 @@
 package com.hhp.lecture.application.service;
 
 import com.hhp.lecture.application.port.in.UserUsecase;
-import com.hhp.lecture.application.port.out.UserAppRepository;
+import com.hhp.lecture.application.port.out.UserPort;
 import com.hhp.lecture.adapter.out.persistence.entity.User;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -12,10 +12,10 @@ import java.util.Optional;
 @Service
 public class UserService implements UserUsecase {
 
-    private final UserAppRepository userAppRepository;
+    private final UserPort userAppRepository;
 
     @Override
     public Optional<User> findByUser(long id) {
-        return userAppRepository.getUserById(id);
+        return userAppRepository.findById(id);
     }
 }
