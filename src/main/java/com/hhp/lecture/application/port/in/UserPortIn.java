@@ -1,14 +1,12 @@
-package com.hhp.lecture.adapter.out.persistence.jpa;
+package com.hhp.lecture.application.port.in;
 
 import com.hhp.lecture.adapter.out.persistence.entity.UserEntity;
-import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 import java.util.Optional;
 
-public interface UserJpaRepository extends JpaRepository<UserEntity, Long> {
+public interface UserPortIn {
     Optional<UserEntity> findById(long id);
     UserEntity save(UserEntity user);
     List<UserEntity> findAll();
 }
-

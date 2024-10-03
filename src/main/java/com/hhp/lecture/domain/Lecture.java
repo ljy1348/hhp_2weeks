@@ -1,20 +1,21 @@
-package com.hhp.lecture.adapter.out.persistence.entity;
+package com.hhp.lecture.domain;
 
-import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Entity
-@Table(name = "instructor")
+import java.time.LocalDateTime;
+
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Instructor {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class Lecture {
     private long id;
     private String name;
+    private long instructorId;
+    private LocalDateTime date;
+    private int maxUserCount;
+    private int totalAppliedUser;
 }

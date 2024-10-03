@@ -6,21 +6,15 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.time.LocalDateTime;
-
 @Entity
-@Table(name = "lecture")
+@Table(name = "instructor")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Lecture {
+public class InstructorEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String name;
-    private long instructorId;
-    private LocalDateTime date;
-    private Integer maxUserCount;
-    private Integer totalAppliedUser;
 }
