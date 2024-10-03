@@ -62,7 +62,8 @@ class LectureServiceTest {
         lecture.setMaxUserCount(30);
         lecture.setTotalAppliedUser(1);
         Optional<Lecture> optionalLecture = Optional.of(lecture);
-        doReturn(optionalLecture).when(lecturePortOut).findById(1L);
+        doReturn(optionalLecture).when(lecturePortOut).findByIdLock(1L);
+        doReturn(0L).when(lectureAppliedUserPortOut).countAllByUserIdAndLectureId(1L, 1L);
 
         LectureApplyResponse result = lectureService.apply(new LectureApplyRequest(1L, 1L));
 
@@ -79,11 +80,11 @@ class LectureServiceTest {
         lecture.setMaxUserCount(30);
         lecture.setTotalAppliedUser(30);
         Optional<Lecture> optionalLecture = Optional.of(lecture);
-        doReturn(optionalLecture).when(lecturePortOut).findById(1L);
+        doReturn(optionalLecture).when(lecturePortOut).findByIdLock(1L);
 
         LectureApplyResponse result = lectureService.apply(new LectureApplyRequest(1L, 1L));
 
-        assertEquals(null, result);
+        assertEquals("N", result.resultYn());
     }
 
     @Test

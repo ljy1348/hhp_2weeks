@@ -41,5 +41,10 @@ public class LectureAppliedUserJpaImple implements LectureAppliedUserPortOut {
     public long countByLecturId(long lectureId) {
         return lectureAppliedUserJpaRepository.countAllByLectureId(lectureId);
     }
+
+    @Override
+    public long countAllByUserIdAndLectureId(long userId, long lectureId) {
+        return lectureAppliedUserJpaRepository.countAllByUserIdAndLectureId(userId, lectureId);
+    }
 }
 
