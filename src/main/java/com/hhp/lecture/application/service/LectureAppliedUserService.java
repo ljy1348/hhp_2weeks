@@ -35,4 +35,9 @@ public class LectureAppliedUserService implements LectureAppliedUserPortIn {
     public long countByLecturId(long lectureId) {
         return lectureAppliedUserPortOut.countByLecturId(lectureId);
     }
+
+    @Override
+    public long countAllByUserIdAndLectureId(long userId, long lectureId) {
+        return lectureAppliedUserPortOut.countAllByUserIdAndLectureId(userId, lectureId);
+    }
 }

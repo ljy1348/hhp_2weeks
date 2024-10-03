@@ -56,6 +56,10 @@ public class LectureService implements LecturePortIn {
             int count = lecture.getTotalAppliedUser();
             int max = lecture.getMaxUserCount();
             if (count < max) {
+                long usercount = lectureAppliedUserPortOut.countAllByUserIdAndLectureId(request.userId(), request.lectureId());
+                if (usercount > 0) {
+                    return new LectureApplyResponse(lecture.getName(), lecture.getDate(), "E");
+                }
                 lecture.setTotalAppliedUser(count+1);
                 save(lecture);
                 LectureAppliedUser lectureAppliedUser = new LectureAppliedUser(request.lectureId(), request.userId());

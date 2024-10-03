@@ -11,4 +11,5 @@ public interface LectureAppliedUserPortOut {
     LectureAppliedUser save(LectureAppliedUser lectureAppliedUser);
     List<LectureAppliedUser> findAll();
     long countByLecturId(long lectureId);
+    long countAllByUserIdAndLectureId(long userId, long lectureId);
 }
