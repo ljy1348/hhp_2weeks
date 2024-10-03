@@ -5,7 +5,6 @@ CREATE TABLE users (
 
 create table lecture ( id bigint primary key auto_increment
                      , instructor_id bigint
-                     , user_id bigint
                      , date timestamp
                      , max_user_count int
                      , total_applied_user int

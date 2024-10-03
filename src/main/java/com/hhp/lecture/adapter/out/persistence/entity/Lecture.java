@@ -20,7 +20,6 @@ public class Lecture {
     private long id;
     private String name;
     private long instructorId;
-    private long userId;
     private LocalDateTime date;
     private Integer maxUserCount;
     private Integer totalAppliedUser;

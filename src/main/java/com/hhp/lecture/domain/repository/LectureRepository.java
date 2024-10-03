@@ -6,8 +6,8 @@ import com.hhp.lecture.adapter.out.persistence.entity.User;
 import java.util.List;
 import java.util.Optional;
 
-public interface UserRepository {
-    Optional<User> findById(long id);
-    User save(User user);
+public interface LectureRepository {
+    Optional<Lecture> findById(long id);
+    Lecture save(Lecture lecture);
     List<Lecture> findAll();
 }
