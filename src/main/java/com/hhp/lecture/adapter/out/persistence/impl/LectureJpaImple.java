@@ -25,6 +25,12 @@ public class LectureJpaImple implements LecturePortOut {
     }
 
     @Override
+    public Optional<Lecture> findByIdLock(long id) {
+        return lectureJpaRepository.getByIdLock(id)
+                .map(LectureEntity::toDomain); // LectureEntity에서 도메인 변환 로직 호출
+    }
+
+    @Override
     public Lecture save(Lecture lecture) {
         LectureEntity entity = LectureEntity.fromDomain(lecture); // LectureEntity에서 도메인으로 변환
         LectureEntity savedEntity = lectureJpaRepository.save(entity);

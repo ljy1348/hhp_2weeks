@@ -10,6 +10,6 @@ public interface LectureAppliedUserJpaRepository extends JpaRepository<LectureAp
     Optional<LectureAppliedUserEntity> findById(long id);
     LectureAppliedUserEntity save(LectureAppliedUserEntity lectureAppliedUser);
     List<LectureAppliedUserEntity> findAll();
-    void deleteById(long id);
+    long countAllByLectureId(long lectureId);
 }
 

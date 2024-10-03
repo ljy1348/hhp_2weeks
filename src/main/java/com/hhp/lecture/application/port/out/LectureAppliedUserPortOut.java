@@ -10,5 +10,5 @@ public interface LectureAppliedUserPortOut {
     Optional<LectureAppliedUser> findById(long id);
     LectureAppliedUser save(LectureAppliedUser lectureAppliedUser);
     List<LectureAppliedUser> findAll();
-    void deleteById(long id);
+    long countByLecturId(long lectureId);
 }

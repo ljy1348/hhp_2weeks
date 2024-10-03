@@ -11,6 +11,7 @@ import java.util.Optional;
 
 public interface LecturePortIn {
     Optional<Lecture> findById(long id);
+    Optional<Lecture> findByIdLock(long id);
     Lecture save(Lecture lecture);
     List<LectureResponse> findAll();
     LectureApplyResponse apply(LectureApplyRequest request);
